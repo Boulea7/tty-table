@@ -55,7 +55,9 @@ RSpec.describe TTY::Table::Renderer::ASCII, 'multiline content' do
       ).render(:ascii, indent: 5, multiline: true)
 
       expect(unindented).to include("\n|an")
-      expect(indented).to eq(unindented.each_line.map { |line| "     " + line }.join)
+      expect(indented).to eq(
+        unindented.each_line.map { |line| "     " + line }.join
+      )
       expect(indented).to include("\n     |an")
     end
 
@@ -68,7 +70,9 @@ RSpec.describe TTY::Table::Renderer::ASCII, 'multiline content' do
       ).render(:ascii, indent: 5, multiline: true)
 
       expect(unindented).to include("\n|Header")
-      expect(indented).to eq(unindented.each_line.map { |line| "     " + line }.join)
+      expect(indented).to eq(
+        unindented.each_line.map { |line| "     " + line }.join
+      )
       expect(indented).to include("\n     |Header")
     end
 
