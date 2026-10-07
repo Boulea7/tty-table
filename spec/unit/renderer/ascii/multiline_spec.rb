@@ -48,10 +48,10 @@ RSpec.describe TTY::Table::Renderer::ASCII, 'multiline content' do
   context 'without escaping' do
     it "indents every line of multiline content" do
       unindented = TTY::Table.new(
-        %w[header1 header2], [["a1\nan", "a2"], %w[b1 b2]]
+        %w[header1 header2], [%W[a1\nan a2], %w[b1 b2]]
       ).render(:ascii, indent: 0, multiline: true)
       indented = TTY::Table.new(
-        %w[header1 header2], [["a1\nan", "a2"], %w[b1 b2]]
+        %w[header1 header2], [%W[a1\nan a2], %w[b1 b2]]
       ).render(:ascii, indent: 5, multiline: true)
 
       expect(unindented).to include("\n|an")
@@ -63,10 +63,10 @@ RSpec.describe TTY::Table::Renderer::ASCII, 'multiline content' do
 
     it "indents every line of a multiline header" do
       unindented = TTY::Table.new(
-        ["Multi\nHeader", "header2"], [%w[First 1]]
+        %W[Multi\nHeader header2], [%w[First 1]]
       ).render(:ascii, indent: 0, multiline: true)
       indented = TTY::Table.new(
-        ["Multi\nHeader", "header2"], [%w[First 1]]
+        %W[Multi\nHeader header2], [%w[First 1]]
       ).render(:ascii, indent: 5, multiline: true)
 
       expect(unindented).to include("\n|Header")
